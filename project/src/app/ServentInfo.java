@@ -17,7 +17,7 @@ public class ServentInfo implements Serializable {
 	public ServentInfo(String ipAddress, int listenerPort) {
 		this.ipAddress = ipAddress;
 		this.listenerPort = listenerPort;
-		this.chordId = ChordState.chordHash(listenerPort);
+		this.chordId = ChordState.chordHash(ipAddress + ":" + listenerPort);
 	}
 
 	public String getIpAddress() {

@@ -1,10 +1,14 @@
 package servent.message;
 
+import java.io.Serial;
+
 public class NewNodeMessage extends BasicMessage {
 
-	private static final long serialVersionUID = 3899837286642127636L;
+	@Serial
+	private static final long serialVersionUID = -7578851736688155676L;
 
-	public NewNodeMessage(int senderPort, int receiverPort) {
-		super(MessageType.NEW_NODE, senderPort, receiverPort);
+	public NewNodeMessage(String senderIpAddress, int senderPort, String receiverIpAddress, int receiverPort) {
+		super(MessageType.NEW_NODE, senderIpAddress, senderPort, receiverIpAddress, receiverPort);
 	}
+
 }

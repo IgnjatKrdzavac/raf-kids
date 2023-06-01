@@ -44,9 +44,15 @@ public class AppConfig {
 	
 	public static boolean INITIALIZED = false;
 	public static int BOOTSTRAP_PORT;
+	public static String BOOTSTRAP_ADDRESS;
 	public static int SERVENT_COUNT;
 	
 	public static ChordState chordState;
+
+	public static String ROOT_DIR;
+
+	public static int WEAK_TIMEOUT;
+	public static int STRONG_TIMEOUT;
 	
 	/**
 	 * Reads a config file. Should be called once at start of app.
@@ -78,6 +84,12 @@ public class AppConfig {
 			timestampedErrorPrint("Couldn't open properties file. Exiting...");
 			System.exit(0);
 		}
+
+		BOOTSTRAP_ADDRESS = properties.getProperty("bs_address");
+		if (BOOTSTRAP_ADDRESS == null) {
+			timestampedErrorPrint("Problem reading bs_address. Exiting...");
+			System.exit(0);
+		}
 		
 		try {
 			BOOTSTRAP_PORT = Integer.parseInt(properties.getProperty("bs.port"));
@@ -90,6 +102,27 @@ public class AppConfig {
 			SERVENT_COUNT = Integer.parseInt(properties.getProperty("servent_count"));
 		} catch (NumberFormatException e) {
 			timestampedErrorPrint("Problem reading servent_count. Exiting...");
+			System.exit(0);
+		}
+
+		ROOT_DIR = properties.getProperty("workdir_path" + serventId);
+		if (ROOT_DIR == null) {
+			System.err.println("Problem reading work_directory property. Exiting...");
+			System.exit(0);
+		}
+
+
+		try {
+			WEAK_TIMEOUT = Integer.parseInt(properties.getProperty("weak_timeout"));
+		} catch (NumberFormatException e) {
+			System.err.println("Problem reading weak_timeout property. Exiting...");
+			System.exit(0);
+		}
+
+		try {
+			STRONG_TIMEOUT = Integer.parseInt(properties.getProperty("strong_timeout"));
+		} catch (NumberFormatException e) {
+			System.err.println("Problem reading strong_timeout property. Exiting...");
 			System.exit(0);
 		}
 		

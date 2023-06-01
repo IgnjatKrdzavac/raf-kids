@@ -1,11 +1,14 @@
 package servent.handler;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import app.AppConfig;
 import app.ServentInfo;
+import app.file_util.FileInfo;
+import mutex.TokenMutex;
 import servent.message.Message;
 import servent.message.MessageType;
 import servent.message.NewNodeMessage;
@@ -24,12 +27,14 @@ public class NewNodeHandler implements MessageHandler {
 	@Override
 	public void run() {
 		if (clientMessage.getMessageType() == MessageType.NEW_NODE) {
+			String newNodeIp = clientMessage.getSenderIpAddress();
 			int newNodePort = clientMessage.getSenderPort();
-			ServentInfo newNodeInfo = new ServentInfo("localhost", newNodePort);
+			ServentInfo newNodeInfo = new ServentInfo(newNodeIp, newNodePort);
 			
 			//check if the new node collides with another existing node.
 			if (AppConfig.chordState.isCollision(newNodeInfo.getChordId())) {
-				Message sry = new SorryMessage(AppConfig.myServentInfo.getListenerPort(), clientMessage.getSenderPort());
+				Message sry = new SorryMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+						clientMessage.getSenderIpAddress(), clientMessage.getSenderPort());
 				MessageUtil.sendMessage(sry);
 				return;
 			}
@@ -37,6 +42,9 @@ public class NewNodeHandler implements MessageHandler {
 			//check if he is my predecessor
 			boolean isMyPred = AppConfig.chordState.isKeyMine(newNodeInfo.getChordId());
 			if (isMyPred) { //if yes, prepare and send welcome message
+
+				TokenMutex.lock();
+
 				ServentInfo hisPred = AppConfig.chordState.getPredecessor();
 				if (hisPred == null) {
 					hisPred = AppConfig.myServentInfo;
@@ -44,14 +52,14 @@ public class NewNodeHandler implements MessageHandler {
 				
 				AppConfig.chordState.setPredecessor(newNodeInfo);
 				
-				Map<Integer, Integer> myValues = AppConfig.chordState.getValueMap();
-				Map<Integer, Integer> hisValues = new HashMap<>();
+				Map<Integer, FileInfo> myValues = AppConfig.chordState.getStorageMap();
+				Map<Integer, FileInfo> hisValues = new HashMap<>();
 				
 				int myId = AppConfig.myServentInfo.getChordId();
 				int hisPredId = hisPred.getChordId();
 				int newNodeId = newNodeInfo.getChordId();
 				
-				for (Entry<Integer, Integer> valueEntry : myValues.entrySet()) {
+				for (Entry<Integer, FileInfo> valueEntry : myValues.entrySet()) {
 					if (hisPredId == myId) { //i am first and he is second
 						if (myId < newNodeId) {
 							if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > myId) {
@@ -84,13 +92,13 @@ public class NewNodeHandler implements MessageHandler {
 				for (Integer key : hisValues.keySet()) { //remove his values from my map
 					myValues.remove(key);
 				}
-				AppConfig.chordState.setValueMap(myValues);
+				AppConfig.chordState.setStorageMap(myValues);
 				
-				WelcomeMessage wm = new WelcomeMessage(AppConfig.myServentInfo.getListenerPort(), newNodePort, hisValues);
+				WelcomeMessage wm = new WelcomeMessage(AppConfig.myServentInfo.getIpAddress(),AppConfig.myServentInfo.getListenerPort(), newNodeIp, newNodePort, hisValues);
 				MessageUtil.sendMessage(wm);
 			} else { //if he is not my predecessor, let someone else take care of it
 				ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(newNodeInfo.getChordId());
-				NewNodeMessage nnm = new NewNodeMessage(newNodePort, nextNode.getListenerPort());
+				NewNodeMessage nnm = new NewNodeMessage(newNodeIp, newNodePort, nextNode.getIpAddress(), nextNode.getListenerPort());
 				MessageUtil.sendMessage(nnm);
 			}
 			

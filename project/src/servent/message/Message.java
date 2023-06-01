@@ -23,6 +23,8 @@ import java.io.Serializable;
  */
 public interface Message extends Serializable {
 
+	String getSenderIpAddress();
+
 	/**
 	 * Port number on which the sender of this message listens for new messages. Use this to reply.
 	 */

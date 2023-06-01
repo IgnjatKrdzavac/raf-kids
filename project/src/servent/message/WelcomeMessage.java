@@ -1,20 +1,22 @@
 package servent.message;
 
+import app.file_util.FileInfo;
+
 import java.util.Map;
 
 public class WelcomeMessage extends BasicMessage {
 
 	private static final long serialVersionUID = -8981406250652693908L;
 
-	private Map<Integer, Integer> values;
-	
-	public WelcomeMessage(int senderPort, int receiverPort, Map<Integer, Integer> values) {
-		super(MessageType.WELCOME, senderPort, receiverPort);
-		
-		this.values = values;
+	private final Map<Integer, FileInfo> storageMap;
+
+	public WelcomeMessage(String senderIpAddress, int senderPort, String receiverIpAddress, int receiverPort, Map<Integer, FileInfo> storageMap) {
+		super(MessageType.WELCOME, senderIpAddress, senderPort, receiverIpAddress, receiverPort);
+		this.storageMap = storageMap;
 	}
-	
-	public Map<Integer, Integer> getValues() {
-		return values;
+
+	public Map<Integer, FileInfo> getStorageMap() {
+		return storageMap;
 	}
+
 }

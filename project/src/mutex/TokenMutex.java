@@ -9,7 +9,11 @@ public class TokenMutex{
     private static volatile boolean haveToken = false;
     private static volatile boolean wantLock = false;
 
-    public void lock() {
+    public static void init() {
+        haveToken = true;
+    }
+
+    public static void lock() {
         wantLock = true;
 
         while (!haveToken) {
@@ -22,7 +26,7 @@ public class TokenMutex{
 
     }
 
-    public void unlock() {
+    public static void unlock() {
         haveToken = false;
         wantLock = false;
         sendTokenForward();
