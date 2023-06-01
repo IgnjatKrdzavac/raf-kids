@@ -1,4 +1,19 @@
-20:33:39 - Starting servent [60|localhost|1400]
-20:33:39 - Pausing for 20000 ms
-20:33:59 - Pausing for 10000 ms
-20:34:09 - Stopping...
+01:00:45 - Starting servent [60|localhost|1400]
+01:00:45 - Pausing for 20000 ms
+# MY CONNECTING PARTNERS PORT IS 1100
+01:00:46 - Sending message [cHashSp:60|sPort:localhost:1400|mId:0|mTxt:|mTyp:NEW_NODE|rPort:localhost:1100|cHashRp:39]
+01:00:50 - Got message [cHashSp:39|sPort:localhost:1100|mId:10|mTxt:|mTyp:WELCOME|rPort:localhost:1400|cHashRp:60]
+01:00:51 - Sending message [cHashSp:60|sPort:localhost:1400|mId:1|mTxt:|mTyp:UPDATE|rPort:localhost:1100|cHashRp:39]
+01:00:55 - Got message [cHashSp:60|sPort:localhost:1400|mId:11|mTxt:localhost:1100,localhost:1300,localhost:1200|mTyp:UPDATE|rPort:localhost:1400|cHashRp:60]
+01:00:56 - Sending message [cHashSp:60|sPort:localhost:1400|mId:2|mTxt:|mTyp:JOINED|rPort:localhost:1100|cHashRp:39]
+01:00:59 - Got message [cHashSp:27|sPort:localhost:1600|mId:12|mTxt:|mTyp:NEW_NODE|rPort:localhost:1400|cHashRp:60]
+01:01:00 - Got message [cHashSp:55|sPort:localhost:1200|mId:13|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]
+01:01:00 - Sending message [cHashSp:27|sPort:localhost:1600|mId:3|mTxt:|mTyp:NEW_NODE|rPort:localhost:1100|cHashRp:39]
+01:01:01 - Sending message [cHashSp:60|sPort:localhost:1400|mId:4|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:01:05 - Pausing for 10000 ms
+01:01:06 - Got message [cHashSp:27|sPort:localhost:1600|mId:14|mTxt:localhost:1100,localhost:1300,localhost:1200|mTyp:UPDATE|rPort:localhost:1400|cHashRp:60]
+01:01:07 - Sending message [cHashSp:27|sPort:localhost:1600|mId:5|mTxt:localhost:1100,localhost:1300,localhost:1200,localhost:1400|mTyp:UPDATE|rPort:localhost:1600|cHashRp:27]
+01:01:11 - Got message [cHashSp:55|sPort:localhost:1200|mId:15|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]
+01:01:12 - Sending message [cHashSp:60|sPort:localhost:1400|mId:6|mTxt:|mTyp:TOKEN|rPort:localhost:1600|cHashRp:27]
+01:01:15 - Stopping...
+01:01:15 - Got message [cHashSp:55|sPort:localhost:1200|mId:16|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]

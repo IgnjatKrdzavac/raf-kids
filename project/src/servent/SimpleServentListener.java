@@ -9,12 +9,7 @@ import java.util.concurrent.Executors;
 
 import app.AppConfig;
 import app.Cancellable;
-import servent.handler.MessageHandler;
-import servent.handler.NewNodeHandler;
-import servent.handler.NullHandler;
-import servent.handler.SorryHandler;
-import servent.handler.UpdateHandler;
-import servent.handler.WelcomeHandler;
+import servent.handler.*;
 import servent.message.Message;
 import servent.message.util.MessageUtil;
 
@@ -76,7 +71,15 @@ public class SimpleServentListener implements Runnable, Cancellable {
 					messageHandler = new UpdateHandler(clientMessage);
 					break;
 
-				case POISON:
+				case JOINED:
+					messageHandler = new JoinedHandler(clientMessage);
+					break;
+
+				case TOKEN:
+					messageHandler = new TokenHandler(clientMessage);
+					break;
+
+					case POISON:
 					break;
 				}
 				

@@ -1,5 +1,40 @@
-20:33:19 - Starting servent [55|localhost|1200]
-20:33:19 - Pausing for 40000 ms
-20:33:59 - Pausing for 5000 ms
-20:34:04 - Pausing for 5000 ms
-20:34:09 - Stopping...
+01:00:25 - Starting servent [55|localhost|1200]
+01:00:25 - Pausing for 40000 ms
+# MY CONNECTING PARTNERS PORT IS 1100
+01:00:27 - Sending message [cHashSp:55|sPort:localhost:1200|mId:0|mTxt:|mTyp:NEW_NODE|rPort:localhost:1100|cHashRp:39]
+01:00:28 - Got message [cHashSp:39|sPort:localhost:1100|mId:0|mTxt:|mTyp:WELCOME|rPort:localhost:1200|cHashRp:55]
+01:00:29 - Sending message [cHashSp:55|sPort:localhost:1200|mId:1|mTxt:|mTyp:UPDATE|rPort:localhost:1100|cHashRp:39]
+01:00:30 - Got message [cHashSp:55|sPort:localhost:1200|mId:1|mTxt:localhost:1100|mTyp:UPDATE|rPort:localhost:1200|cHashRp:55]
+01:00:31 - Sending message [cHashSp:55|sPort:localhost:1200|mId:2|mTxt:|mTyp:JOINED|rPort:localhost:1100|cHashRp:39]
+01:00:32 - Got message [cHashSp:39|sPort:localhost:1100|mId:2|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:00:33 - Sending message [cHashSp:55|sPort:localhost:1200|mId:3|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:00:34 - Got message [cHashSp:39|sPort:localhost:1100|mId:3|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:00:35 - Sending message [cHashSp:55|sPort:localhost:1200|mId:4|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:00:36 - Got message [cHashSp:39|sPort:localhost:1100|mId:4|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:00:37 - Sending message [cHashSp:55|sPort:localhost:1200|mId:5|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:00:37 - Got message [cHashSp:53|sPort:localhost:1300|mId:5|mTxt:|mTyp:NEW_NODE|rPort:localhost:1200|cHashRp:55]
+01:00:37 - Got message [cHashSp:39|sPort:localhost:1100|mId:6|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:00:39 - Sending message [cHashSp:55|sPort:localhost:1200|mId:6|mTxt:|mTyp:WELCOME|rPort:localhost:1300|cHashRp:53]
+01:00:40 - Got message [cHashSp:53|sPort:localhost:1300|mId:1|mTxt:|mTyp:UPDATE|rPort:localhost:1200|cHashRp:55]
+01:00:41 - Sending message [cHashSp:53|sPort:localhost:1300|mId:7|mTxt:localhost:1200|mTyp:UPDATE|rPort:localhost:1100|cHashRp:39]
+01:00:42 - Got message [cHashSp:53|sPort:localhost:1300|mId:2|mTxt:|mTyp:JOINED|rPort:localhost:1200|cHashRp:55]
+01:00:43 - Sending message [cHashSp:55|sPort:localhost:1200|mId:8|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:00:45 - Got message [cHashSp:53|sPort:localhost:1300|mId:3|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:00:46 - Sending message [cHashSp:55|sPort:localhost:1200|mId:9|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:00:48 - Got message [cHashSp:53|sPort:localhost:1300|mId:4|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:00:49 - Sending message [cHashSp:55|sPort:localhost:1200|mId:10|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:00:54 - Got message [cHashSp:60|sPort:localhost:1400|mId:5|mTxt:localhost:1100,localhost:1300|mTyp:UPDATE|rPort:localhost:1200|cHashRp:55]
+01:00:55 - Sending message [cHashSp:60|sPort:localhost:1400|mId:11|mTxt:localhost:1100,localhost:1300,localhost:1200|mTyp:UPDATE|rPort:localhost:1400|cHashRp:60]
+01:00:58 - Got message [cHashSp:27|sPort:localhost:1600|mId:6|mTxt:|mTyp:NEW_NODE|rPort:localhost:1200|cHashRp:55]
+01:00:59 - Got message [cHashSp:53|sPort:localhost:1300|mId:7|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:00:59 - Sending message [cHashSp:27|sPort:localhost:1600|mId:12|mTxt:|mTyp:NEW_NODE|rPort:localhost:1400|cHashRp:60]
+01:01:00 - Sending message [cHashSp:55|sPort:localhost:1200|mId:13|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]
+01:01:05 - Pausing for 5000 ms
+01:01:06 - Got message [cHashSp:27|sPort:localhost:1600|mId:8|mTxt:localhost:1100,localhost:1300|mTyp:UPDATE|rPort:localhost:1200|cHashRp:55]
+01:01:06 - Sending message [cHashSp:27|sPort:localhost:1600|mId:14|mTxt:localhost:1100,localhost:1300,localhost:1200|mTyp:UPDATE|rPort:localhost:1400|cHashRp:60]
+01:01:09 - Got message [cHashSp:53|sPort:localhost:1300|mId:9|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:01:10 - Pausing for 5000 ms
+01:01:11 - Sending message [cHashSp:55|sPort:localhost:1200|mId:15|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]
+01:01:14 - Got message [cHashSp:53|sPort:localhost:1300|mId:10|mTxt:|mTyp:TOKEN|rPort:localhost:1200|cHashRp:55]
+01:01:15 - Stopping...
+01:01:15 - Sending message [cHashSp:55|sPort:localhost:1200|mId:16|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]

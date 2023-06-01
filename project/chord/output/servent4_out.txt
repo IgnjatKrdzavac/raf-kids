@@ -1,5 +1,13 @@
-20:33:49 - Starting servent [27|localhost|1600]
-20:33:49 - Pausing for 10000 ms
-20:33:59 - Pausing for 4000 ms
-20:34:03 - Pausing for 6000 ms
-20:34:09 - Stopping...
+01:00:55 - Starting servent [27|localhost|1600]
+01:00:55 - Pausing for 10000 ms
+# MY CONNECTING PARTNERS PORT IS 1300
+01:00:56 - Sending message [cHashSp:27|sPort:localhost:1600|mId:0|mTxt:|mTyp:NEW_NODE|rPort:localhost:1300|cHashRp:53]
+01:01:02 - Got message [cHashSp:39|sPort:localhost:1100|mId:13|mTxt:|mTyp:WELCOME|rPort:localhost:1600|cHashRp:27]
+01:01:03 - Sending message [cHashSp:27|sPort:localhost:1600|mId:1|mTxt:|mTyp:UPDATE|rPort:localhost:1100|cHashRp:39]
+01:01:05 - Pausing for 4000 ms
+01:01:07 - Got message [cHashSp:27|sPort:localhost:1600|mId:5|mTxt:localhost:1100,localhost:1300,localhost:1200,localhost:1400|mTyp:UPDATE|rPort:localhost:1600|cHashRp:27]
+01:01:08 - Sending message [cHashSp:27|sPort:localhost:1600|mId:2|mTxt:|mTyp:JOINED|rPort:localhost:1100|cHashRp:39]
+01:01:09 - Pausing for 6000 ms
+01:01:12 - Got message [cHashSp:60|sPort:localhost:1400|mId:6|mTxt:|mTyp:TOKEN|rPort:localhost:1600|cHashRp:27]
+01:01:12 - Sending message [cHashSp:27|sPort:localhost:1600|mId:3|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
+01:01:15 - Stopping...

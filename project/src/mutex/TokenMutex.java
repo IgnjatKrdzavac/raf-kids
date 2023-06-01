@@ -1,6 +1,7 @@
 package mutex;
 
 import app.AppConfig;
+import servent.message.Message;
 import servent.message.TokenMessage;
 import servent.message.util.MessageUtil;
 
@@ -41,9 +42,12 @@ public class TokenMutex{
     }
 
     public static void sendTokenForward() {
-//        int nextNodeId = (AppConfig.myServentInfo.getId() + 1) % AppConfig.getServentCount();
-//
-//        MessageUtil.sendMessage(new TokenMessage(AppConfig.myServentInfo, AppConfig.getInfoById(nextNodeId)));
+        String nextNodeIp = AppConfig.chordState.getNextNodeIp();
+        int nextNodePort = AppConfig.chordState.getNextNodePort();
+
+        Message tokenMessage = new TokenMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+                nextNodeIp, nextNodePort);
+        MessageUtil.sendMessage(tokenMessage);
     }
 
 
