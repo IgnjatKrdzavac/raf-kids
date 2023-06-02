@@ -1,3 +1,4 @@
 pause 30000
+add file2.txt
 pause 10000
 stop

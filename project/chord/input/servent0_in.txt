@@ -1,4 +1,4 @@
 pause 50000
-dht_put 2 5
+add file0.txt
 pause 10000
 stop

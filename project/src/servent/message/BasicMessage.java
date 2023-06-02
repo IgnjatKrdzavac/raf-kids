@@ -117,9 +117,9 @@ public class BasicMessage implements Message{
 			String senderIpAddressPort = getSenderIpAddress() + ":" + getSenderPort();
 			String receiverIpAddressPort = getReceiverIpAddress() + ":" + getReceiverPort();
 
-			return "[cHashSp:" + ChordState.chordHash(senderIpAddressPort) + "|sPort:" + senderIpAddressPort + "|mId:" +
-					getMessageId() + "|mTxt:" + getMessageText() + "|mTyp:" + getMessageType() + "|rPort:" +
-					receiverIpAddressPort + "|cHashRp:" + ChordState.chordHash(receiverIpAddressPort) + "]";
+			return "[HashS:" + ChordState.chordHash(senderIpAddressPort) + "|sendPort:" + senderIpAddressPort + "|messId:" +
+					getMessageId() + "|messTxt:" + getMessageText() + "|messType:" + getMessageType() + "|recPort:" +
+					receiverIpAddressPort + "|HashR:" + ChordState.chordHash(receiverIpAddressPort) + "]";
 
 		}
 

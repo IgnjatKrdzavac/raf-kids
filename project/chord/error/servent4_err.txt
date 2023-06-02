@@ -1,2 +1,0 @@
-01:01:05 - Unknown command: dht_put
-01:01:09 - Unknown command: dht_get

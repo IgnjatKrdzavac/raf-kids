@@ -52,49 +52,12 @@ public class NewNodeHandler implements MessageHandler {
 				
 				AppConfig.chordState.setPredecessor(newNodeInfo);
 				
-				Map<Integer, FileInfo> myValues = AppConfig.chordState.getStorageMap();
-				Map<Integer, FileInfo> hisValues = new HashMap<>();
+				Map<String, FileInfo> myStorage = AppConfig.chordState.getStorageMap();
+
+
+				Map<String, FileInfo> hisStorage = new HashMap<>(myStorage);
 				
-				int myId = AppConfig.myServentInfo.getChordId();
-				int hisPredId = hisPred.getChordId();
-				int newNodeId = newNodeInfo.getChordId();
-				
-				for (Entry<Integer, FileInfo> valueEntry : myValues.entrySet()) {
-					if (hisPredId == myId) { //i am first and he is second
-						if (myId < newNodeId) {
-							if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > myId) {
-								hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-							}
-						} else {
-							if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > myId) {
-								hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-							}
-						}
-					}
-					if (hisPredId < myId) { //my old predecesor was before me
-						if (valueEntry.getKey() <= newNodeId) {
-							hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-						}
-					} else { //my old predecesor was after me
-						if (hisPredId > newNodeId) { //new node overflow
-							if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > hisPredId) {
-								hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-							}
-						} else { //no new node overflow
-							if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > hisPredId) {
-								hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-							}
-						}
-						
-					}
-					
-				}
-				for (Integer key : hisValues.keySet()) { //remove his values from my map
-					myValues.remove(key);
-				}
-				AppConfig.chordState.setStorageMap(myValues);
-				
-				WelcomeMessage wm = new WelcomeMessage(AppConfig.myServentInfo.getIpAddress(),AppConfig.myServentInfo.getListenerPort(), newNodeIp, newNodePort, hisValues);
+				WelcomeMessage wm = new WelcomeMessage(AppConfig.myServentInfo.getIpAddress(),AppConfig.myServentInfo.getListenerPort(), newNodeIp, newNodePort, hisStorage);
 				MessageUtil.sendMessage(wm);
 			} else { //if he is not my predecessor, let someone else take care of it
 				ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(newNodeInfo.getChordId());

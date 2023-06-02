@@ -70,16 +70,13 @@ public class SimpleServentListener implements Runnable, Cancellable {
 				case UPDATE:
 					messageHandler = new UpdateHandler(clientMessage);
 					break;
-
 				case JOINED:
 					messageHandler = new JoinedHandler(clientMessage);
 					break;
-
 				case TOKEN:
 					messageHandler = new TokenHandler(clientMessage);
 					break;
-
-					case POISON:
+				case POISON:
 					break;
 				}
 				

@@ -1,19 +1,42 @@
-01:00:45 - Starting servent [60|localhost|1400]
-01:00:45 - Pausing for 20000 ms
+21:13:01 - Starting servent [60|localhost|1400]
+21:13:01 - Pausing for 20000 ms
 # MY CONNECTING PARTNERS PORT IS 1100
-01:00:46 - Sending message [cHashSp:60|sPort:localhost:1400|mId:0|mTxt:|mTyp:NEW_NODE|rPort:localhost:1100|cHashRp:39]
-01:00:50 - Got message [cHashSp:39|sPort:localhost:1100|mId:10|mTxt:|mTyp:WELCOME|rPort:localhost:1400|cHashRp:60]
-01:00:51 - Sending message [cHashSp:60|sPort:localhost:1400|mId:1|mTxt:|mTyp:UPDATE|rPort:localhost:1100|cHashRp:39]
-01:00:55 - Got message [cHashSp:60|sPort:localhost:1400|mId:11|mTxt:localhost:1100,localhost:1300,localhost:1200|mTyp:UPDATE|rPort:localhost:1400|cHashRp:60]
-01:00:56 - Sending message [cHashSp:60|sPort:localhost:1400|mId:2|mTxt:|mTyp:JOINED|rPort:localhost:1100|cHashRp:39]
-01:00:59 - Got message [cHashSp:27|sPort:localhost:1600|mId:12|mTxt:|mTyp:NEW_NODE|rPort:localhost:1400|cHashRp:60]
-01:01:00 - Got message [cHashSp:55|sPort:localhost:1200|mId:13|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]
-01:01:00 - Sending message [cHashSp:27|sPort:localhost:1600|mId:3|mTxt:|mTyp:NEW_NODE|rPort:localhost:1100|cHashRp:39]
-01:01:01 - Sending message [cHashSp:60|sPort:localhost:1400|mId:4|mTxt:|mTyp:TOKEN|rPort:localhost:1100|cHashRp:39]
-01:01:05 - Pausing for 10000 ms
-01:01:06 - Got message [cHashSp:27|sPort:localhost:1600|mId:14|mTxt:localhost:1100,localhost:1300,localhost:1200|mTyp:UPDATE|rPort:localhost:1400|cHashRp:60]
-01:01:07 - Sending message [cHashSp:27|sPort:localhost:1600|mId:5|mTxt:localhost:1100,localhost:1300,localhost:1200,localhost:1400|mTyp:UPDATE|rPort:localhost:1600|cHashRp:27]
-01:01:11 - Got message [cHashSp:55|sPort:localhost:1200|mId:15|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]
-01:01:12 - Sending message [cHashSp:60|sPort:localhost:1400|mId:6|mTxt:|mTyp:TOKEN|rPort:localhost:1600|cHashRp:27]
-01:01:15 - Stopping...
-01:01:15 - Got message [cHashSp:55|sPort:localhost:1200|mId:16|mTxt:|mTyp:TOKEN|rPort:localhost:1400|cHashRp:60]
+21:13:02 - Sending message [HashS:60|sendPort:localhost:1400|messId:0|messTxt:|messType:NEW_NODE|recPort:localhost:1100|HashR:39]
+21:13:04 - Got message [HashS:39|sendPort:localhost:1100|messId:9|messTxt:|messType:WELCOME|recPort:localhost:1400|HashR:60]
+21:13:06 - Sending message [HashS:60|sendPort:localhost:1400|messId:1|messTxt:|messType:UPDATE|recPort:localhost:1100|HashR:39]
+21:13:09 - Got message [HashS:60|sendPort:localhost:1400|messId:10|messTxt:localhost:1100,localhost:1300,localhost:1200|messType:UPDATE|recPort:localhost:1400|HashR:60]
+21:13:10 - Sending message [HashS:60|sendPort:localhost:1400|messId:2|messTxt:|messType:JOINED|recPort:localhost:1100|HashR:39]
+21:13:14 - Got message [HashS:55|sendPort:localhost:1200|messId:11|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:14 - # SENDING TOKEN FROM 1400 TO 1100
+21:13:14 - Got message [HashS:27|sendPort:localhost:1600|messId:12|messTxt:|messType:NEW_NODE|recPort:localhost:1400|HashR:60]
+21:13:15 - Sending message [HashS:60|sendPort:localhost:1400|messId:3|messTxt:|messType:TOKEN|recPort:localhost:1100|HashR:39]
+21:13:15 - Sending message [HashS:27|sendPort:localhost:1600|messId:4|messTxt:|messType:NEW_NODE|recPort:localhost:1100|HashR:39]
+21:13:19 - Got message [HashS:55|sendPort:localhost:1200|messId:13|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:19 - # SENDING TOKEN FROM 1400 TO 1100
+21:13:20 - Sending message [HashS:60|sendPort:localhost:1400|messId:5|messTxt:|messType:TOKEN|recPort:localhost:1100|HashR:39]
+21:13:21 - Pausing for 10000 ms
+21:13:24 - Got message [HashS:55|sendPort:localhost:1200|messId:15|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:24 - # SENDING TOKEN FROM 1400 TO 1100
+21:13:24 - Got message [HashS:55|sendPort:localhost:1200|messId:14|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:24 - # SENDING TOKEN FROM 1400 TO 1100
+21:13:24 - Sending message [HashS:60|sendPort:localhost:1400|messId:6|messTxt:|messType:TOKEN|recPort:localhost:1100|HashR:39]
+21:13:25 - Sending message [HashS:60|sendPort:localhost:1400|messId:7|messTxt:|messType:TOKEN|recPort:localhost:1100|HashR:39]
+21:13:25 - Got message [HashS:55|sendPort:localhost:1200|messId:16|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:25 - # SENDING TOKEN FROM 1400 TO 1100
+21:13:26 - Got message [HashS:27|sendPort:localhost:1600|messId:17|messTxt:localhost:1100,localhost:1300,localhost:1200|messType:UPDATE|recPort:localhost:1400|HashR:60]
+21:13:26 - Sending message [HashS:60|sendPort:localhost:1400|messId:8|messTxt:|messType:TOKEN|recPort:localhost:1100|HashR:39]
+21:13:27 - Sending message [HashS:27|sendPort:localhost:1600|messId:9|messTxt:localhost:1100,localhost:1300,localhost:1200,localhost:1400|messType:UPDATE|recPort:localhost:1600|HashR:27]
+21:13:27 - Got message [HashS:55|sendPort:localhost:1200|messId:18|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:27 - # SENDING TOKEN FROM 1400 TO 1600
+21:13:28 - Got message [HashS:55|sendPort:localhost:1200|messId:19|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:28 - # SENDING TOKEN FROM 1400 TO 1600
+21:13:28 - Sending message [HashS:60|sendPort:localhost:1400|messId:10|messTxt:|messType:TOKEN|recPort:localhost:1600|HashR:27]
+21:13:28 - Sending message [HashS:60|sendPort:localhost:1400|messId:11|messTxt:|messType:TOKEN|recPort:localhost:1600|HashR:27]
+21:13:29 - Got message [HashS:55|sendPort:localhost:1200|messId:20|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:29 - # SENDING TOKEN FROM 1400 TO 1600
+21:13:30 - Sending message [HashS:60|sendPort:localhost:1400|messId:12|messTxt:|messType:TOKEN|recPort:localhost:1600|HashR:27]
+21:13:31 - Got message [HashS:55|sendPort:localhost:1200|messId:21|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:31 - # SENDING TOKEN FROM 1400 TO 1600
+21:13:31 - Stopping...
+21:13:32 - Got message [HashS:55|sendPort:localhost:1200|messId:22|messTxt:|messType:TOKEN|recPort:localhost:1400|HashR:60]
+21:13:32 - # SENDING TOKEN FROM 1400 TO 1600

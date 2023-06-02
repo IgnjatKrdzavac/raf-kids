@@ -13,7 +13,11 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import app.file_util.FileInfo;
+import mutex.TokenMutex;
+import servent.message.InformAboutAddMessage;
+import servent.message.Message;
 import servent.message.WelcomeMessage;
+import servent.message.util.MessageUtil;
 
 /**
  * This class implements all the logic required for Chord to function.
@@ -65,7 +69,7 @@ public class ChordState{
 
 //	private Map<Integer, Integer> valueMap;
 
-		private Map<Integer, FileInfo> storageMap;
+		private Map<String, FileInfo> storageMap;
 		private Map<Integer, Integer> versionMap;
 		private Map<Integer, FileInfo> workingMap;
 		private Map<Integer, Long> lastModifiedMap;
@@ -299,11 +303,11 @@ public class ChordState{
 			return successorTable;
 		}
 
-		public void setStorageMap(Map<Integer, FileInfo> storageMap) {
+		public void setStorageMap(Map<String, FileInfo> storageMap) {
 			this.storageMap = storageMap;
 		}
 
-		public Map<Integer, FileInfo> getStorageMap() {
+		public Map<String, FileInfo> getStorageMap() {
 			return storageMap;
 		}
 
@@ -335,4 +339,27 @@ public class ChordState{
 			return false;
 		}
 
+    public void addToStorage(FileInfo fileInfo, String requesterIp, int requesterPort) {
+		if (!storageMap.containsKey(fileInfo.getPath())) { //Check if file is alredy added
+			storageMap.put(fileInfo.getPath(), new FileInfo(fileInfo));
+			AppConfig.timestampedStandardPrint("File " + fileInfo.getPath() + " stored successfully.");
+
+			TokenMutex.unlock();
+
+			String nextNodeIp = AppConfig.chordState.getNextNodeIp();
+			int nextNodePort = AppConfig.chordState.getNextNodePort();
+
+			Message addInfoMsg = new InformAboutAddMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+					nextNodeIp, nextNodePort, requesterIp, requesterPort, fileInfo);
+			AppConfig.timestampedStandardPrint("Sending inform message " + addInfoMsg);
+			MessageUtil.sendMessage(addInfoMsg);
+
+			for (Map.Entry<String, FileInfo> map: storageMap.entrySet()) {
+				System.out.println("storage = " + map.getKey() + " : " + map.getValue());
+			}
+		}
+		else {
+			AppConfig.timestampedStandardPrint("We already have " + fileInfo.getPath());
+		}
+    }
 }

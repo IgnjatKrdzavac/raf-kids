@@ -47,6 +47,7 @@ public class TokenMutex{
 
         Message tokenMessage = new TokenMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
                 nextNodeIp, nextNodePort);
+        AppConfig.timestampedStandardPrint("# SENDING TOKEN FROM " + AppConfig.myServentInfo.getListenerPort() + " TO " + nextNodePort);
         MessageUtil.sendMessage(tokenMessage);
     }
 
