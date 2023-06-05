@@ -39,7 +39,7 @@ public class AddCommand implements CLICommand{
             }
         }
 
-        TokenMutex.unlock(); //UNLOCK 1a
+        TokenMutex.unlock();
     }
 
 

@@ -344,10 +344,11 @@ public class ChordState{
 			storageMap.put(fileInfo.getPath(), new FileInfo(fileInfo));
 			AppConfig.timestampedStandardPrint("File " + fileInfo.getPath() + " stored successfully.");
 
-			TokenMutex.unlock();
 
 			String nextNodeIp = AppConfig.chordState.getNextNodeIp();
 			int nextNodePort = AppConfig.chordState.getNextNodePort();
+
+			AppConfig.timestampedErrorPrint(AppConfig.myServentInfo.getIpAddress());
 
 			Message addInfoMsg = new InformAboutAddMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
 					nextNodeIp, nextNodePort, requesterIp, requesterPort, fileInfo);

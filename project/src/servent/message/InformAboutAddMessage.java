@@ -1,5 +1,6 @@
 package servent.message;
 
+import app.AppConfig;
 import app.file_util.FileInfo;
 
 public class InformAboutAddMessage extends BasicMessage{
@@ -15,51 +16,11 @@ public class InformAboutAddMessage extends BasicMessage{
         this.requesterIpAddress = requesterIpAddress;
         this.requesterPort = requesterPort;
         this.fileInfo = fileInfo;
-    }
-    @Override
-    public String getSenderIpAddress() {
-        return null;
-    }
 
-    @Override
-    public int getSenderPort() {
-        return 0;
     }
+    public String getRequesterIpAddress() { return requesterIpAddress; }
 
-    @Override
-    public int getReceiverPort() {
-        return 0;
-    }
+    public int getRequesterPort() { return requesterPort; }
 
-    @Override
-    public String getReceiverIpAddress() {
-        return null;
-    }
-
-    @Override
-    public MessageType getMessageType() {
-        return null;
-    }
-
-    @Override
-    public String getMessageText() {
-        return null;
-    }
-
-    @Override
-    public int getMessageId() {
-        return 0;
-    }
-
-    public String getRequesterIpAddress() {
-        return requesterIpAddress;
-    }
-
-    public int getRequesterPort() {
-        return requesterPort;
-    }
-
-    public FileInfo getFileInfo() {
-        return fileInfo;
-    }
+    public FileInfo getFileInfo() { return fileInfo; }
 }
