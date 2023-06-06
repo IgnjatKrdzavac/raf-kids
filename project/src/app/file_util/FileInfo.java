@@ -17,7 +17,9 @@ public class FileInfo implements Serializable {
         private final boolean isDirectory;
         private final List<String> subFiles;
 
-        public FileInfo(String path, boolean isDirectory, String content, List<String> subFiles) {
+        private final int OgNode;
+
+        public FileInfo(String path, boolean isDirectory, String content, List<String> subFiles, int ogNode) {
             this.path = path;
             this.isDirectory = isDirectory;
             this.content = content;
@@ -25,19 +27,20 @@ public class FileInfo implements Serializable {
             if (subFiles != null) {
                 this.subFiles.addAll(subFiles);
             }
+            this.OgNode = ogNode;
         }
 
-        public FileInfo(String path, String content) {
-            this(path, false, content,  null);
-        }
+    public FileInfo(String path, String content, int ogNode) {
+        this(path, false, content,  null, ogNode);
+    }
 
-        public FileInfo(String path, List<String> subFiles) {
-            this (path, true, "", subFiles);
-        }
+    public FileInfo(String path, List<String> subFiles, int ogNode) {
+        this (path, true, "", subFiles, ogNode);
+    }
 
-        public FileInfo(FileInfo fileInfo) {
-            this(fileInfo.getPath(), fileInfo.isDirectory(), fileInfo.getContent(),  fileInfo.getSubFiles());
-        }
+    public FileInfo(FileInfo fileInfo) {
+        this(fileInfo.getPath(), fileInfo.isDirectory(), fileInfo.getContent(),  fileInfo.getSubFiles(), fileInfo.getOgNode());
+    }
 
         public String getPath() {
             return path;
@@ -60,7 +63,11 @@ public class FileInfo implements Serializable {
             return subFiles;
         }
 
-        @Override
+    public int getOgNode() {
+        return OgNode;
+    }
+
+    @Override
         public int hashCode() {
             return ChordState.chordHash(getPath());
         }

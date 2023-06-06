@@ -14,6 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import app.file_util.FileInfo;
 import mutex.TokenMutex;
+import servent.message.AskPullMessage;
 import servent.message.InformAboutAddMessage;
 import servent.message.Message;
 import servent.message.WelcomeMessage;
@@ -70,9 +71,10 @@ public class ChordState{
 //	private Map<Integer, Integer> valueMap;
 
 		private Map<String, FileInfo> storageMap;
-		private Map<Integer, Integer> versionMap;
-		private Map<Integer, FileInfo> workingMap;
-		private Map<Integer, Long> lastModifiedMap;
+
+		public List<FileInfo> pulledFiles;
+		public int amountToPull;
+		public int amountPulled;
 
 		public ChordState() {
 			this.chordLevel = 1;
@@ -95,9 +97,9 @@ public class ChordState{
 			allNodeInfo = new ArrayList<>();
 
 			storageMap = new ConcurrentHashMap<>();
-			versionMap = new ConcurrentHashMap<>();
-			workingMap = new ConcurrentHashMap<>();
-			lastModifiedMap = new ConcurrentHashMap<>();
+			pulledFiles = new ArrayList<>();
+			amountToPull = 0;
+			amountPulled = 0;
 		}
 
 
@@ -293,11 +295,7 @@ public class ChordState{
 
 		//todo storage pull file
 
-		public void addToWorkingMap(FileInfo fileInfo, long lastModified) {
-			int key = chordHash(fileInfo.getPath());
-			workingMap.put(key, new FileInfo(fileInfo));
-			lastModifiedMap.put(key, lastModified);
-		}
+
 
 		public ServentInfo[] getSuccessorTable() {
 			return successorTable;
@@ -363,4 +361,83 @@ public class ChordState{
 			AppConfig.timestampedStandardPrint("We already have " + fileInfo.getPath());
 		}
     }
+
+    public void pullFile(String path) {
+		//dohvatimo iz storagea fajlove koje je potrebno pulovati
+		List<FileInfo> filesToPull = pullFromStorage(path);
+
+		if (filesToPull == null) {
+			AppConfig.timestampedErrorPrint("Bad pull path - " + path);
+			return;
+		}
+
+		if (filesToPull.isEmpty()) {
+			AppConfig.timestampedErrorPrint("No files found to pull - " + path);
+			return;
+		}
+
+		//posaljemo svima ask pull msg
+		pulledFiles.clear();
+		amountPulled = 0;
+
+		AppConfig.timestampedErrorPrint(filesToPull.toString());
+		for (FileInfo fileToPull : filesToPull) {
+			Message askMessage = new AskPullMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+					getNextNodeIp(), getNextNodePort(), AppConfig.myServentInfo.getChordId(), fileToPull);
+			MessageUtil.sendMessage(askMessage);
+			AppConfig.timestampedErrorPrint("sent ask msg " + askMessage);
+		}
+		amountToPull = filesToPull.size();
+    }
+
+	private List<FileInfo> pullFromStorage(String path) {
+		if (storageMap.containsKey(path)){
+			List<FileInfo> filesToReturn = new ArrayList<>();
+
+			FileInfo requestedFileInfo = storageMap.get(path); //
+
+			if (!requestedFileInfo.isDirectory()) {//ako je file, nasli smo ga i samo ga vrati
+				filesToReturn.add(requestedFileInfo);
+				return filesToReturn;
+			}
+
+			//ako je dir onda iskopaj sve filove koji su nam unutar dira
+			List<String> allDirSubFilePaths = getAllFilesFromDir(requestedFileInfo);
+
+			for (String pathKey: allDirSubFilePaths){
+				if (storageMap.containsKey(pathKey))
+					filesToReturn.add(storageMap.get(pathKey));
+			}
+
+
+			return filesToReturn;
+		}
+		else return null;
+	}
+
+	private List<String> getAllFilesFromDir(FileInfo requestedFileInfo) {
+		List<String> filePaths = new ArrayList<>();
+		for (String path: requestedFileInfo.getSubFiles()) {
+			if (path.contains(".")) filePaths.add(path);//ako ima tacku znaci da je neki file
+			else filePaths.addAll(getAllFilesFromDir(storageMap.get(path))); //ako nema znaci da je dir i daj mi njegove subdirove
+		}
+		return filePaths;
+	}
+
+	public void addPulledFile(FileInfo fileInfo) {
+		pulledFiles.add(fileInfo);
+		amountPulled++;
+		if (amountPulled == amountToPull){
+			printPulledFiles();
+		}
+	}
+
+	private void printPulledFiles() {
+		AppConfig.timestampedStandardPrint("Printing pulled files");
+		for (FileInfo pulledFile: pulledFiles){
+			System.out.println("\n-----" + pulledFile.getPath() + "-----");
+			System.out.println(pulledFile.getContent());
+		}
+	}
 }
+

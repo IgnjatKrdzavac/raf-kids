@@ -11,6 +11,7 @@ import app.AppConfig;
 import app.Cancellable;
 import servent.handler.*;
 import servent.message.Message;
+import servent.message.TellPullMessage;
 import servent.message.util.MessageUtil;
 
 public class SimpleServentListener implements Runnable, Cancellable {
@@ -78,6 +79,12 @@ public class SimpleServentListener implements Runnable, Cancellable {
 					break;
 				case ADD_INFORM:
 						messageHandler = new InformAboutAddHandler(clientMessage);
+					break;
+				case TELL_PULL:
+						messageHandler = new TellPullHandler(clientMessage);
+					break;
+				case ASK_PULL:
+					messageHandler = new AskPullHandler(clientMessage);
 					break;
 				case POISON:
 					break;

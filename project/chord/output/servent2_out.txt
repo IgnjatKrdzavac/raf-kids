@@ -1,49 +1,51 @@
-22:44:20 - Starting servent [53|localhost|1300]
-22:44:20 - Pausing for 30000 ms
+13:04:43 - Starting servent [53|localhost|1300]
+13:04:43 - Pausing for 30000 ms
 # MY CONNECTING PARTNERS PORT IS 1100
-22:44:21 - Sending message [HashS:53|sendPort:localhost:1300|messId:0|messTxt:|messType:NEW_NODE|recPort:localhost:1100|HashR:39]
-22:44:24 - Got message [HashS:55|sendPort:localhost:1200|messId:6|messTxt:|messType:WELCOME|recPort:localhost:1300|HashR:53]
-22:44:24 - Sending message [HashS:53|sendPort:localhost:1300|messId:1|messTxt:|messType:UPDATE|recPort:localhost:1200|HashR:55]
-22:44:26 - Got message [HashS:53|sendPort:localhost:1300|messId:7|messTxt:localhost:1200,localhost:1100|messType:UPDATE|recPort:localhost:1300|HashR:53]
-22:44:27 - Sending message [HashS:53|sendPort:localhost:1300|messId:2|messTxt:|messType:JOINED|recPort:localhost:1200|HashR:55]
-22:44:29 - Got message [HashS:39|sendPort:localhost:1100|messId:8|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
-22:44:29 - # SENDING TOKEN FROM 1300 TO 1200
-22:44:30 - Sending message [HashS:53|sendPort:localhost:1300|messId:3|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
-22:44:33 - Got message [HashS:39|sendPort:localhost:1100|messId:9|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
-22:44:33 - # SENDING TOKEN FROM 1300 TO 1200
-22:44:34 - Sending message [HashS:53|sendPort:localhost:1300|messId:4|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
-22:44:37 - Got message [HashS:60|sendPort:localhost:1400|messId:11|messTxt:localhost:1100|messType:UPDATE|recPort:localhost:1300|HashR:53]
-22:44:39 - Sending message [HashS:60|sendPort:localhost:1400|messId:5|messTxt:localhost:1100,localhost:1300|messType:UPDATE|recPort:localhost:1200|HashR:55]
-22:44:41 - Got message [HashS:27|sendPort:localhost:1600|messId:0|messTxt:|messType:NEW_NODE|recPort:localhost:1300|HashR:53]
-22:44:41 - Sending message [HashS:27|sendPort:localhost:1600|messId:6|messTxt:|messType:NEW_NODE|recPort:localhost:1200|HashR:55]
-22:44:41 - Got message [HashS:39|sendPort:localhost:1100|messId:12|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
-22:44:41 - # SENDING TOKEN FROM 1300 TO 1200
-22:44:42 - Sending message [HashS:53|sendPort:localhost:1300|messId:7|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
-22:44:48 - Got message [HashS:27|sendPort:localhost:1600|messId:14|messTxt:localhost:1100|messType:UPDATE|recPort:localhost:1300|HashR:53]
-22:44:49 - Sending message [HashS:27|sendPort:localhost:1600|messId:8|messTxt:localhost:1100,localhost:1300|messType:UPDATE|recPort:localhost:1200|HashR:55]
-22:44:51 - Got message [HashS:39|sendPort:localhost:1100|messId:16|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
-22:44:51 - File file2.txt stored successfully.
-22:44:51 - Sending inform message [HashS:53|sendPort:localhost:1300|messId:9|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
+13:04:44 - Sending message [HashS:53|sendPort:localhost:1300|messId:0|messTxt:|messType:NEW_NODE|recPort:localhost:1100|HashR:39]
+13:04:46 - Got message [HashS:55|sendPort:localhost:1200|messId:7|messTxt:|messType:WELCOME|recPort:localhost:1300|HashR:53]
+13:04:47 - Sending message [HashS:53|sendPort:localhost:1300|messId:1|messTxt:|messType:UPDATE|recPort:localhost:1200|HashR:55]
+13:04:49 - Got message [HashS:53|sendPort:localhost:1300|messId:8|messTxt:localhost:1200,localhost:1100|messType:UPDATE|recPort:localhost:1300|HashR:53]
+13:04:50 - Sending message [HashS:53|sendPort:localhost:1300|messId:2|messTxt:|messType:JOINED|recPort:localhost:1200|HashR:55]
+13:04:52 - Got message [HashS:39|sendPort:localhost:1100|messId:9|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
+13:04:52 - # SENDING TOKEN FROM 1300 TO 1200
+13:04:53 - Sending message [HashS:53|sendPort:localhost:1300|messId:3|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
+13:04:57 - Got message [HashS:60|sendPort:localhost:1400|messId:11|messTxt:localhost:1100|messType:UPDATE|recPort:localhost:1300|HashR:53]
+13:04:59 - Sending message [HashS:60|sendPort:localhost:1400|messId:4|messTxt:localhost:1100,localhost:1300|messType:UPDATE|recPort:localhost:1200|HashR:55]
+13:05:02 - Got message [HashS:39|sendPort:localhost:1100|messId:12|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
+13:05:02 - # SENDING TOKEN FROM 1300 TO 1200
+13:05:03 - Sending message [HashS:53|sendPort:localhost:1300|messId:5|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
+13:05:03 - Got message [HashS:27|sendPort:localhost:1600|messId:0|messTxt:|messType:NEW_NODE|recPort:localhost:1300|HashR:53]
+13:05:04 - Sending message [HashS:27|sendPort:localhost:1600|messId:6|messTxt:|messType:NEW_NODE|recPort:localhost:1200|HashR:55]
+13:05:06 - Got message [HashS:39|sendPort:localhost:1100|messId:13|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
+13:05:06 - # SENDING TOKEN FROM 1300 TO 1200
+13:05:08 - Sending message [HashS:53|sendPort:localhost:1300|messId:7|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
+13:05:13 - Got message [HashS:27|sendPort:localhost:1600|messId:15|messTxt:localhost:1100|messType:UPDATE|recPort:localhost:1300|HashR:53]
+13:05:13 - Sending message [HashS:27|sendPort:localhost:1600|messId:8|messTxt:localhost:1100,localhost:1300|messType:UPDATE|recPort:localhost:1200|HashR:55]
+13:05:14 - Got message [HashS:39|sendPort:localhost:1100|messId:17|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
+13:05:14 - File file2.txt stored successfully.
+13:05:14 - Sending inform message [HashS:53|sendPort:localhost:1300|messId:9|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
 storage = file2.txt : [file2.txt]
-22:44:51 - # SENDING TOKEN FROM 1300 TO 1200
-22:44:51 - Pausing for 10000 ms
-22:44:51 - Got message [HashS:39|sendPort:localhost:1100|messId:15|messTxt:|messType:ADD_INFORM|recPort:localhost:1300|HashR:53]
-22:44:51 - File file0.txt stored successfully.
-22:44:51 - Sending inform message [HashS:53|sendPort:localhost:1300|messId:11|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
+13:05:14 - # SENDING TOKEN FROM 1300 TO 1200
+13:05:14 - Pausing for 10000 ms
+13:05:14 - Got message [HashS:39|sendPort:localhost:1100|messId:16|messTxt:|messType:ADD_INFORM|recPort:localhost:1300|HashR:53]
+13:05:14 - File file0.txt stored successfully.
+13:05:14 - Sending inform message [HashS:53|sendPort:localhost:1300|messId:11|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
 storage = file0.txt : [file0.txt]
 storage = file2.txt : [file2.txt]
-22:44:52 - Sending message [HashS:53|sendPort:localhost:1300|messId:10|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
-22:44:52 - Sending message [HashS:53|sendPort:localhost:1300|messId:9|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
-22:44:52 - Sending message [HashS:53|sendPort:localhost:1300|messId:11|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
-22:44:53 - Got message [HashS:39|sendPort:localhost:1100|messId:17|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
-22:44:53 - # SENDING TOKEN FROM 1300 TO 1200
-22:44:54 - Sending message [HashS:53|sendPort:localhost:1300|messId:12|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
-22:44:55 - Got message [HashS:39|sendPort:localhost:1100|messId:18|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
-22:44:55 - # SENDING TOKEN FROM 1300 TO 1200
-22:44:56 - Got message [HashS:39|sendPort:localhost:1100|messId:19|messTxt:|messType:ADD_INFORM|recPort:localhost:1300|HashR:53]
-22:44:56 - We already have file2.txt
-22:44:56 - Sending message [HashS:53|sendPort:localhost:1300|messId:13|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
-22:44:57 - Got message [HashS:39|sendPort:localhost:1100|messId:20|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
-22:44:57 - # SENDING TOKEN FROM 1300 TO 1200
-22:44:57 - Sending message [HashS:53|sendPort:localhost:1300|messId:14|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
-22:45:01 - Stopping...
+13:05:15 - Sending message [HashS:53|sendPort:localhost:1300|messId:10|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
+13:05:15 - Sending message [HashS:53|sendPort:localhost:1300|messId:11|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
+13:05:15 - Sending message [HashS:53|sendPort:localhost:1300|messId:9|messTxt:|messType:ADD_INFORM|recPort:localhost:1200|HashR:55]
+13:05:16 - Got message [HashS:39|sendPort:localhost:1100|messId:18|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
+13:05:16 - # SENDING TOKEN FROM 1300 TO 1200
+13:05:17 - Sending message [HashS:53|sendPort:localhost:1300|messId:12|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
+13:05:19 - Got message [HashS:39|sendPort:localhost:1100|messId:19|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
+13:05:19 - # SENDING TOKEN FROM 1300 TO 1200
+13:05:20 - Got message [HashS:39|sendPort:localhost:1100|messId:20|messTxt:|messType:ADD_INFORM|recPort:localhost:1300|HashR:53]
+13:05:20 - We already have file2.txt
+13:05:20 - Sending message [HashS:53|sendPort:localhost:1300|messId:13|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
+13:05:21 - Got message [HashS:39|sendPort:localhost:1100|messId:21|messTxt:|messType:TOKEN|recPort:localhost:1300|HashR:53]
+13:05:21 - # SENDING TOKEN FROM 1300 TO 1200
+13:05:22 - Got message [HashS:39|sendPort:localhost:1100|messId:22|messTxt:|messType:TELL_PULL|recPort:localhost:1300|HashR:53]
+13:05:22 - Sending message [HashS:53|sendPort:localhost:1300|messId:14|messTxt:|messType:TOKEN|recPort:localhost:1200|HashR:55]
+13:05:23 - Sending message [HashS:39|sendPort:localhost:1100|messId:15|messTxt:|messType:TELL_PULL|recPort:localhost:1200|HashR:55]
+13:05:24 - Stopping...

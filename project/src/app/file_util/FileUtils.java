@@ -52,7 +52,7 @@ public class FileUtils{
                 if (!fileContent.isEmpty())
                     fileContent.deleteCharAt(fileContent.length() - 1);
 
-                return new FileInfo(filePath, fileContent.toString());
+                return new FileInfo(filePath, fileContent.toString(),AppConfig.myServentInfo.getChordId());
             } catch (IOException e) {
                 AppConfig.timestampedErrorPrint("Couldn't read " + path + ".");
             }
@@ -100,7 +100,7 @@ public class FileUtils{
                 }
 
                 dirPath = dirPath.replace(rootDirectory + "\\", "");
-                fileInfoList.add(new FileInfo(dirPath, subFiles));
+                fileInfoList.add(new FileInfo(dirPath, subFiles, AppConfig.myServentInfo.getChordId()));
             }
             return fileInfoList;
         }
