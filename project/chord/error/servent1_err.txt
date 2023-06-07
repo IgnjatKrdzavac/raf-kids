@@ -1,4 +1,2 @@
-13:05:15 - localhost
-13:05:15 - localhost
-13:05:18 - [[file0.txt]]
-13:05:18 - sent ask msg [HashS:55|sendPort:localhost:1200|messId:20|messTxt:|messType:ASK_PULL|recPort:localhost:1400|HashR:60]
+17:44:27 - [[0subdir\file0.txt]]
+17:44:27 - sent ask msg [HashS:55|sendPort:localhost:1200|messId:20|messTxt:|messType:ASK_PULL|recPort:localhost:1400|HashR:60]

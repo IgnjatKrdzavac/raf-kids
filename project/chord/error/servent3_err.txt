@@ -1,3 +1,0 @@
-13:05:16 - localhost
-13:05:16 - localhost
-13:05:24 - Couldn't send message: [HashS:60|sendPort:localhost:1400|messId:13|messTxt:|messType:TOKEN|recPort:localhost:1600|HashR:27]

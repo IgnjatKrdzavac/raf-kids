@@ -14,10 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import app.file_util.FileInfo;
 import mutex.TokenMutex;
-import servent.message.AskPullMessage;
-import servent.message.InformAboutAddMessage;
-import servent.message.Message;
-import servent.message.WelcomeMessage;
+import servent.message.*;
 import servent.message.util.MessageUtil;
 
 /**
@@ -346,7 +343,6 @@ public class ChordState{
 			String nextNodeIp = AppConfig.chordState.getNextNodeIp();
 			int nextNodePort = AppConfig.chordState.getNextNodePort();
 
-			AppConfig.timestampedErrorPrint(AppConfig.myServentInfo.getIpAddress());
 
 			Message addInfoMsg = new InformAboutAddMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
 					nextNodeIp, nextNodePort, requesterIp, requesterPort, fileInfo);
@@ -439,5 +435,35 @@ public class ChordState{
 			System.out.println(pulledFile.getContent());
 		}
 	}
+
+    public void removeFileFromStorage(String path) {
+		if (!storageMap.containsKey(path)) AppConfig.timestampedErrorPrint("File already removed - " + path);
+
+		FileInfo fileToRemove = storageMap.get(path);
+		if (fileToRemove.isFile()){
+			storageMap.remove(path);
+			AppConfig.timestampedStandardPrint("Removing file" + path + " from virtual memory");
+			Message removeMessage = new RemoveMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+					getNextNodeIp(), getNextNodePort(), path);
+			MessageUtil.sendMessage(removeMessage);
+
+			for (Map.Entry<String, FileInfo> map: storageMap.entrySet()) {
+				System.out.println("storage after removing = " + map.getKey() + " : " + map.getValue());
+			}
+		}
+		else {
+			AppConfig.timestampedStandardPrint("Removing directory" + fileToRemove + " from virtual memory");
+			for (String dirFileToRemove: getAllFilesFromDir(fileToRemove)) {
+				storageMap.remove(dirFileToRemove);
+				Message removeMessage = new RemoveMessage(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+						getNextNodeIp(), getNextNodePort(), path);
+				MessageUtil.sendMessage(removeMessage);
+
+				for (Map.Entry<String, FileInfo> map: storageMap.entrySet()) {
+					System.out.println("storage after removing = " + map.getKey() + " : " + map.getValue());
+				}
+			}
+		}
+    }
 }
 

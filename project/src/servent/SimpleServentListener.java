@@ -86,9 +86,14 @@ public class SimpleServentListener implements Runnable, Cancellable {
 				case ASK_PULL:
 					messageHandler = new AskPullHandler(clientMessage);
 					break;
+				case REMOVE:
+					messageHandler = new RemoveHandler(clientMessage);
+					break;
 				case POISON:
 					break;
 				}
+
+
 				
 				threadPool.submit(messageHandler);
 			} catch (SocketTimeoutException timeoutEx) {

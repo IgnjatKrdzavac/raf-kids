@@ -1,4 +1,4 @@
 pause 50000
-add file0.txt
+add 0subdir/file0.txt
 pause 10000
 stop

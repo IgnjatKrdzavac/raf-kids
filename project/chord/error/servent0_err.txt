@@ -1,3 +1,1 @@
-13:05:13 - localhost
-13:05:18 - localhost
-13:05:21 - sent tell msg [HashS:39|sendPort:localhost:1100|messId:22|messTxt:|messType:TELL_PULL|recPort:localhost:1300|HashR:53]
+17:44:29 - sent tell msg [HashS:39|sendPort:localhost:1100|messId:21|messTxt:|messType:TELL_PULL|recPort:localhost:1300|HashR:53]

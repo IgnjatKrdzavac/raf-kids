@@ -1,5 +1,5 @@
 pause 40000
 pause 5000
-pull file0.txt
+pull 0subdir/file0.txt
 pause 5000
 stop
