@@ -1,0 +1,140 @@
+Bootstrap server{
+	
+	Bootstrap server je čvor posebne namene, koji se koristi samo za povezivanje novih čvorova sa čvorovima
+		koji su već u mreži.
+
+
+	Kroz socket Bootstrap server dobija sledeće 3 poruke, za koje preduzima različite akcije:
+
+	Hail-> posalje novom nodu ip:port nekog random noda i novi node se zatim povezuje za taj nasumično odabrani node.
+		  Ukoliko je prvi node poslao poruku, on dobija -1 i na taj način inicijalizuje početak programa.
+
+	New -> dodaje novi node u listu aktivnih nodova.
+	
+	Bye -> sklanja node iz liste aktivnih nodova.
+	
+	
+}
+
+Servent main{
+	
+	Startuje servent tako što poziva SimpleServentListener, CLIParser i ServentInitializer.
+
+}
+
+
+ServentInitializer{
+
+	Šalje "Hail" poruku Bootstrap serveru i dobija svoju poziciju u lancu servenata.
+
+	- Ako je prvi node inicijalizuje TokenMutex, tj. uzima token kod sebe.
+
+	- Ako nije prvi, prosledi ostalima NewNodeMessage.
+
+}
+
+NewNode message (SSL - uhvati newNodeMsg i prosledi nnHandleru) {
+	
+	Ako se nalazimo pored novog noda:
+
+		-Servent (koji je prethodnik) novog noda treba da ga ubaci u lanac.
+	
+		-Čekamo da dobijemo token i uradimo lock.
+	
+		-Podesimo storage fajlova novog noda.
+	
+		-Pošaljemo welcomeMessage novom nodu
+	
+	Ako nismo pored novog noda: 
+
+		-Prosledimo NewNodeMessage dalje dok ne nadjemo node koji nam treba.
+}
+
+Welcome message(SSL - uhvati welcomeMsg i prosledi wHandleru) {
+
+	- Nakon primanja Welcome poruke, novi node incijalizuje ChordState.
+
+	- Pošalje Bootstrap serveru "New".
+
+	- Kreira Update poruku i šalje sledecm nodeu.
+}
+
+Update message(SSL - uhvati updateMsg i prosledi uHandleru) {
+
+	-Ako je node koji je primio update negde u sredini lanca, onda dodaj novi node kod sebe u listu, prosledi UpdateMsg dalje.
+	
+	-Akoje node koji je primio upadte novi node, onda dodaj listu svih nodova kod sebe.
+	
+	-Pošalji JOIN msg, koji prima JoinHanlder da unlock-uje mutex, od onoga koji drži token.	
+}
+
+
+
+-STORAGE-
+
+
+
+ADD_COMMAND {
+
+	-Proveri da li file/dir postoji i posalje ga ChordState-u da ga stavi u svoju mapu.
+	Mutex.Lock
+
+	-AddToStorage metoda u chord, stavi u mapu, zatim napravi ADD_INFORM msg koji ce da informise druge nodove da dodaju u svoje mape.
+
+	-Posalje poruku sledecem nodu.
+	Mutex.Unlock
+}
+
+InformAboutAdd msg (SSL - uhvati addInform msg i prosledi iaaHandleru){
+
+	-Ako smo mi node kojem je poslata poruka (iz addToStorage metode), dodaj file u svoju mapu.
+	
+	-Ako nismo oni koji trebaju da sačuvaju, pošalji dalje istu poruku.
+}
+
+
+
+PULL_COMMAND {
+
+	- Aktivira ChordState pullFile koji onda nadje sve filove koje treba da pulla.
+
+	- Napravi za svaki ASK_PULL msg i posalje ostalima a zatim ceka.
+	
+	- Kada se završi proces unutar TellPull handlera i stignu svi pullovani fajlovi vrši se ispis (printPulledFiles).
+}
+
+ASK_PULL message (SSL - uhvati askPull msg i prosledi apHandleru){
+
+	- Ask pull handler proveri da li smo mi servent od koga trebamo da pullamo file info
+
+	- Ako  jesmo, zapakuje info u TELL_PULL msg i posalje dalje
+}
+
+TELL_PULL message (SSL - uhvati tellPull msg i prosledi tpHandleru){
+
+	- Tell pull handler proveri da li smo mi onaj servent koji je originalno trazio pull
+
+	- Ako jesmo, postavi pull info u listu pullovanih fajlova da se printaju
+}
+
+
+
+REMOVE_COMMAND {
+
+	Mutex.Lock
+
+	- Proveri da li smo mi servent koji je originalno dodao file u memoriju.
+	
+	-Ako jesmo:
+		
+		- Ukloni iz nase memorije 
+		- Napravi REMOVE msg
+		-Prosledi ostalima remove msg
+
+	Mutex.Unlock
+}
+
+REMOVE message (SSL - uhvati remove msg i prosledi rHandleru){
+
+	- Proveri da li smo vec sklonili file iz memorije i skloni ga ako nismo
+}
